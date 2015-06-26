@@ -1,0 +1,1 @@
+# rails_elasticsearch_example
