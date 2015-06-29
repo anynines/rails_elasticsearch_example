@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Articles</h1>
+
+<%= form_tag articles_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+<div id="articles">
+<% @articles.each do |article| %>
+  <h2>
+    <%= link_to article.title, article %>
+    <span>(<%= pluralize(article.comments.size, 'comment') %>)</span>
+  </h2>
+  <div><%= article.text %></div><br>
+  <div><%= link_to 'Edit', edit_article_path(article) %> | <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Article', new_article_path %>
